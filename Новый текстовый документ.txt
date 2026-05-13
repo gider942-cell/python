@@ -1,0 +1,36 @@
+while True:
+    try:
+        weight = float(input("Введите ваш вес (кг): "))
+        if weight <= 0:
+            print("Ошибка: вес должен быть положительным числом!")
+            continue
+        steps_input = float(input("Введите количество шагов: "))
+        if steps_input < 0:
+            print("Ошибка: количество шагов не может быть отрицательным!")
+            continue
+        steps = int(steps_input)
+        print(f"Принято: {steps} шагов. Продолжаем расчёт...")
+        step_length_input = input("Введите длину шага (м, по умолчанию 0.7): ")
+        if step_length_input == '':
+            step_length = 0.7
+        else:
+            step_length = float(step_length_input)
+            if step_length <= 0:
+                print("Ошибка: длина шага должна быть положительным числом!")
+                continue
+            
+        calories_per_kg_per_km = 0.5
+        distance_km = (steps * step_length) / 1000
+        calories_burned = weight * distance_km * calories_per_kg_per_km
+
+        print(f"Пройденное расстояние: {distance_km:.2f} км")
+        print(f"Сожжённые калории: {calories_burned:.1f} ккал")
+
+    except ValueError:
+        print("Ошибка: введите корректные числовые значения!")
+        continue
+    
+    again = input("\nХотите рассчитать ещё раз? (да/нет): ").lower().strip()
+    if again not in ['да', 'д', 'yes', 'y']:
+        print("Спасибо за использование шагомера! До свидания!")
+        exit()
