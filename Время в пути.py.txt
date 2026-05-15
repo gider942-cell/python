@@ -1,0 +1,30 @@
+print(Калькулятор времени в пути)
+results = []
+
+def calculate_travel_time()
+    while True
+        try
+            speed = int(input(Введите скорость в кмч ))
+            km = float(input(Введите расстояние в км ))
+            break
+        except ValueError
+            print(Ошибка! Вводите только числовые значения'.)
+            exit()
+
+    time = speedkm
+    hours = int(time)
+    minutes = int((time - hours)  60)
+    return fРасстояние {km} км, Скорость {speed} кмч > Время {hours} ч {minutes} мин
+
+while True
+    result = calculate_travel_time()
+    results.append(result)
+    print(result)
+
+    again = input(Рассчитать ещё раз (данет) ).lower()
+    if again not in ['да', 'д', 'yes', 'y']
+        break
+
+print(История расчётов)
+for i, res in enumerate(results, 1)
+    print(f{i}. {res})
