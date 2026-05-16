@@ -1,0 +1,8 @@
+while True:
+    binary_str = input("Enter a binary number: ").strip()
+    if all(digit in '01' for digit in binary_str) and binary_str:
+        break
+    else:
+        print("Invalid input.")
+decimal = int(binary_str, 2)
+print(decimal)
