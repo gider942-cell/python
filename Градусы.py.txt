@@ -1,0 +1,35 @@
+print("Temperature Converter")
+print("1. Celsius to Fahrenheit")
+print("2. Fahrenheit to Celsius")
+
+choice = input("Choose conversion (1 or 2): ")
+
+if choice == "1":
+    try:
+        temp_c = float(input("ENTER TEMPERATURE IN CELSIUS: "))
+        temp_f = (temp_c * 9/5) + 32
+        print(f"TEMPERATURE IN FAHRENHEIT: {temp_f:.1f}°F")
+    except ValueError:
+        print("ERROR: Please enter a valid number.")
+elif choice == "2":
+    try:
+        temp_f = float(input("ENTER TEMPERATURE IN FAHRENHEIT: "))
+        temp_c = (temp_f - 32) * 5/9
+        print(f"TEMPERATURE IN CELSIUS: {temp_c:.1f}°C")
+    except ValueError:
+        print("ERROR: Please enter a valid number.")
+else:
+    print("Invalid choice. Please select 1 or 2.")
+
+while True:
+    try:
+        temp_c = int(input("ENTER TEMPERATURE IN CELSIUS: "))
+        temp_f = ((temp_c / 5) * 9) + 32
+        temp_k = temp_c + 273.15
+        print(f"TEMPERATURE IN CELSIUS: {temp_c:.1f}")
+        print(f"TEMPERATURE IN FAHRENHEIT: {temp_f:.1f}")
+        print(f"TEMPERATURE IN KELVIN: {temp_k:.1f}")
+        exit()
+    except ValueError:
+        print("ERROR")
+        
