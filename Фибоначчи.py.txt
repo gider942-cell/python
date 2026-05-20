@@ -1,0 +1,70 @@
+try:
+    n = int(input("Enter number of terms to be printed: "))
+    first = 0
+    second = 1
+    fib_sequence = []
+    if n <= 0:
+        print("Please enter a positive number.")
+    elif n == 1:
+        fib_sequence.append(first)
+        print(first)
+    elif n == 2:
+        fib_sequence.extend([first, second])
+        print(first)
+        print(second)
+    else:
+        fib_sequence.extend([first, second])
+        print(first)
+        print(second)
+    for x in range(2,n):
+        third = first + second
+        fib_sequence.append(third)
+        print(third)
+        first, second = second, third
+except ValueError:
+    print("ERROR!!!ENTER NUMBER, NOT WORD!!!")
+    exit()
+if fib_sequence: 
+    print("\n" + "="*40)
+    print("FIBONACCI SEQUENCE ANALYSIS")
+    print("="*40)
+    while True:
+        try:
+            search_num = input("Enter number to search (or 'q' to quit): ")
+            if search_num.lower() == 'q':
+                print("Search ended.")
+                break
+            search_num = int(search_num)
+            if search_num in fib_sequence:
+                positions = [i + 1 for i, num in enumerate(fib_sequence) if num == search_num]
+                print(f"? Number {search_num} found at positions: {positions}")
+            else:
+                print(f"? Number {search_num} not found in the sequence.")
+        except ValueError:
+            print("Please enter a valid number or 'q' to quit.")
+    print(f"Number of terms: {len(fib_sequence)}")
+    print(f"Sequence: {fib_sequence}")
+    print(f"\n--- Statistics ---")
+    print(f"Sum: {sum(fib_sequence)}")
+    print(f"Minimum: {min(fib_sequence)}")
+    print(f"Maximum: {max(fib_sequence)}")
+    average = sum(fib_sequence) / len(fib_sequence)
+    print(f"Average: {average:.2f}")
+    even_count = sum(1 for x in fib_sequence if x % 2 == 0)
+    odd_count = len(fib_sequence) - even_count
+    print(f"\n--- Parity Analysis ---")
+    print(f"Even numbers: {even_count}")
+    print(f"Odd numbers: {odd_count}")
+    if len(fib_sequence) > 1:
+        growth = [fib_sequence[i] - fib_sequence[i-1] for i in range(1, len(fib_sequence))]
+        print(f"\n--- Growth Pattern ---")
+        print(f"Differences between consecutive terms: {growth}")
+    print(f"\n--- Positions ---")
+    for i, num in enumerate(fib_sequence, 1):
+        print(f"F({i}) = {num}")
+    duplicates = [x for x in set(fib_sequence) if fib_sequence.count(x) > 1]
+    print(f"\n--- Duplicates ---")
+    if duplicates:
+        print(f"Found duplicates: {duplicates}")
+    else:
+        print("No duplicates found (expected for Fibonacci sequence)")
