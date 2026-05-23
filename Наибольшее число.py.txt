@@ -1,0 +1,35 @@
+while True:
+    # Ввод данных
+    a = input_integer("First number: ")
+    b = input_integer("Second number: ")
+    c = input_integer("Third number: ")
+
+    # Использование функций
+    print(f"\nResults:")
+    print(f"Greatest: {find_maximum(a, b, c)}")
+    print(f"Middle: {find_middle_number(a, b, c)}")
+    print(f"Sorted: {sort_three_numbers(a, b, c)}")
+
+    dups = check_duplicates([a, b, c])
+    if dups:
+        print(f"Duplicates: {dups}")
+
+    stats = calculate_statistics([a, b, c])
+    print(f"Stats: Sum={stats['sum']}, Avg={stats['average']}")
+
+    print("\nEven/odd analysis:")
+    for line in analyze_even_odd([a, b, c]):
+        print(line)
+
+    # Запрос на продолжение или выход
+    print("\n" + "-" * 40)
+    while True:
+        choice = input("Do you want to analyze another set of numbers? (y/n): ").lower()
+        if choice in ['y', 'yes', '']:  # Пустой ввод тоже считаем за «да»
+            print("Starting new analysis...\n")
+            break
+        elif choice in ['n', 'no']:
+            print("Goodbye!")
+            exit()  # Завершаем программу
+        else:
+            print("Please enter 'y' for yes or 'n' for no.")
