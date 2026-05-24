@@ -1,0 +1,28 @@
+def check_prime_with_divisors(n):
+    if n < 2:
+        return False, []
+    divisors = []
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i: 
+                divisors.append(n // i)
+    if divisors:
+        return False, sorted(divisors)
+    else:
+        return True, []
+
+def format_divisors(divisors):
+    if not divisors:
+        return "none"
+    elif len(divisors) == 1:
+        return str(divisors[0])
+    else:
+        return ", ".join(map(str, divisors))
+
+num = int(input("Enter number: "))
+is_prime, divisors = check_prime_with_divisors(num)
+if is_prime:
+    print(num, "is a prime number")
+else:
+    print(num, "not a prime number. Divisors:", format_divisors(divisors))
